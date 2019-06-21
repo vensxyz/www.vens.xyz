@@ -1,0 +1,33 @@
+{
+  "name": "www.vens.xyz",
+  "version": "0.0.1",
+  "description": "A repository for the www.vens.xyz website",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vensxyz/www.vens.xyz.git"
+  },
+  "author": "vensxyz",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/vensxyz/www.vens.xyz/issues"
+  },
+  "homepage": "https://github.com/vensxyz/www.vens.xyz#readme",
+  "dependencies": {
+    "dotenv": "^8.0.0",
+    "koa": "^2.7.0",
+    "koa-bodyparser": "^4.2.1",
+    "koa-router": "^7.4.0",
+    "telebot": "^1.2.6"
+  },
+  "devDependencies": {
+    "@types/koa": "^2.0.48",
+    "@types/koa-bodyparser": "^4.3.0",
+    "@types/koa-router": "^7.0.41",
+    "@types/node": "^12.0.8",
+    "@types/telebot": "^1.2.1",
+    "typescript": "^3.5.2"
+  }
+}

@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>vensxyz</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css">
+    <link rel="stylesheet" href="css/timeline.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+</head>
+<body class="site">
+    <div id="vueApp" class="site-content">
+        <!-- Navigation -->
+        <nav class="navbar is-dark is-center" role="navigation" aria-label="main navigation">
+            <div class="container">
+                <div class="navbar-brand">
+                    <a id="nav-toggle" role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+                        <span aria-hidden="true"></span>
+                        <span aria-hidden="true"></span>
+                        <span aria-hidden="true"></span>
+                    </a>
+                </div>
+                <div id="navbarBasicExample" class="navbar-menu">
+                    <div class="navbar-start">
+                        <a id="gohome" class="navbar-item" v-on:click="currentTab = 'home'">HOME</a>
+                        <a id="goabout" class="navbar-item" v-on:click="currentTab = 'about'">ABOUT</a>
+                        <a id="gocontact" class="navbar-item" v-on:click="currentTab = 'contact'">CONTACT</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <!-- Hero -->
+        <section class="hero is-dark">
+            <div class="hero-body">
+                <div class="container">
+                    <h1 class="title">
+                        VENS.XYZ
+                    </h1>
+                    <h2 class="subtitle">
+                        let us create your website
+                    </h2>
+                </div>
+            </div>
+        </section>
+        <!-- content -->
+        <section>
+            <div class="container">
+                <br>
+                <component
+                        v-bind:is="currentTabComponent"
+                ></component>
+            </div>
+        </section>
+    </div>
+    <!-- Footer -->
+    <footer class="footer" style="padding: 1em">
+        <div class="content has-text-centered">
+            <p>
+                <strong>vens.xyz</strong> is created by <a href="http://www.vens.xyz">vensxyz</a>.
+                <br>
+                <a href="https://bulma.io">
+                    <img src="https://bulma.io/images/made-with-bulma--semiblack.png" alt="Made with Bulma" width="128" height="24">
+                </a>
+            </p>
+        </div>
+    </footer>
+</body>
+<script src="https://unpkg.com/vue"></script>
+
+<script type="text/javascript">
+
+    Vue.component('tab-home', {
+        template: `
+                <div class="content is-large">
+                    <h2>we create websites</h2>
+                    <p>
+                            The <strong>process is simple</strong>, tell us about your business. And we will make you a <strong>clean</strong> website.<br>
+                            Not everyone has <strong>time</strong> to spend hours on <strong>overcomplicating</strong> a website's needs.<br>
+                            We need a general <strong>feel</strong> for you and what your <strong>business does</strong> and we can get to work.
+                    </p>
+                </div>
+
+            `
+    });
+    Vue.component('tab-about', {
+        template: `
+            <div>
+                <br>
+                <div class="timeline is-centered">
+                    <header class="timeline-header">
+                        <span class="tag is-medium is-dark">START</span>
+                    </header>
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                        <p class="heading">March 2019</p>
+                        <p>Leave old job to go freelance.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                        <p class="heading">April 2019</p>
+                        <p>Accept first client, a South African based startup.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                        <p class="heading">June 2019</p>
+                        <!-- <p>Childhood friend from school wanted an online store <a href="www.linkcyclingapparel.xyz">LinkCyclingApparel</a>. Wonderful product quality, I wear my items daily.</p><br> -->
+                        <p>Release a website <a href="www.vens.xyz">vens.xyz</a> for my own company <strong>vensxyz</strong></p>
+                        </div>
+                    </div>
+                    <div class="timeline-header">
+                        <span class="tag is-medium is-dark">NOW</span>
+                    </div>
+                </div>
+                <br>
+            </div>
+            `
+    });
+    Vue.component('tab-contact', {
+        template: `
+            <div>
+                <br>
+                <div class="field is-horizontal">
+                    <div class="field-label is-normal">
+                        <label class="label">Name</label>
+                    </div>
+                    <div class="field-body">
+                        <div class="field">
+                        <div class="control">
+                            <input id="contactName" class="input" type="text" placeholder="e.g. Steven Smith">
+                        </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="field is-horizontal">
+                    <div class="field-label is-normal">
+                        <label class="label">Email</label>
+                    </div>
+                    <div class="field-body">
+                        <div class="field">
+                        <div class="control">
+                            <input id="contactEmail" class="input" type="email" placeholder="e.g. stevensmith@mail.com">
+                        </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="field is-horizontal">
+                    <div class="field-label is-normal">
+                        <label class="label">Phone</label>
+                    </div>
+                    <div class="field-body">
+                        <div class="field">
+                        <div class="control">
+                            <input id="contactPhone" class="input" type="phone" placeholder="e.g. 4044044004">
+                        </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="field is-horizontal">
+                    <div class="field-label is-normal">
+                        <label class="label">Tell me more</label>
+                    </div>
+                    <div class="field-body">
+                        <div class="field">
+                        <div class="control">
+                            <textarea id="contactContent" class="textarea has-fixed-size" placeholder="..." rows="6"></textarea>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="field is-horizontal">
+                    <div class="field-label">
+                    </div>
+                    <div class="field-body">
+                        <div class="field">
+                        <div class="control">
+                            <button class="button is-dark" onclick="sendContact()">
+                            Send message
+                            </button>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+                <br>
+            </div>
+            `
+    });
+    new Vue({
+        el: '#vueApp',
+        data: {
+            currentTab: 'home',
+            tabs: ['home', 'about', 'contact']
+        },
+        computed: {
+            currentTabComponent: function () {
+                return 'tab-' + this.currentTab;
+            }
+        }
+    })
+</script>
+<script type="text/javascript">
+    document.getElementById("nav-toggle").addEventListener ("click", toggleNav);
+    document.getElementById("gohome").addEventListener ("click", closeNav);
+    document.getElementById("goabout").addEventListener ("click", closeNav);
+    document.getElementById("gocontact").addEventListener ("click", closeNav);
+    function toggleNav() {
+        let nav = document.getElementById("navbarBasicExample");
+        let navToggle = document.getElementById("nav-toggle");
+        let className = nav.getAttribute("class");
+        if(className == "navbar-menu is-active") {
+            nav.className = "navbar-menu";
+            navToggle.className = "navbar-burger";
+        } else {
+            nav.className = "navbar-menu is-active";
+            navToggle.className = "navbar-burger is-active";
+        }
+    }
+    function closeNav() {
+        let nav = document.getElementById("navbarBasicExample");
+        let navToggle = document.getElementById("nav-toggle");
+        nav.className = "navbar-menu";
+        navToggle.className = "navbar-burger";
+    }
+    function sendContact() {
+        let xhr = new XMLHttpRequest();
+        xhr.open("POST", "/contact", true);
+        xhr.setRequestHeader('Content-Type', 'application/json');
+        xhr.send(JSON.stringify({
+            contactName: document.getElementById('contactName').value,
+            contactEmail: document.getElementById('contactEmail').value,
+            contactPhone: document.getElementById('contactPhone').value,
+            contactContent: document.getElementById('contactContent').value
+        }));
+        document.getElementById('contactName').value = "";
+        document.getElementById('contactEmail').value = "";
+        document.getElementById('contactPhone').value = "";
+        document.getElementById('contactContent').value = "";
+    }
+</script>
+</html>

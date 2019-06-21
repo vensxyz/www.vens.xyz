@@ -1,0 +1,34 @@
+// import Logger
+import { Logger } from "../Logger";
+
+// import router
+import * as Router from "koa-router";
+
+// import Bot
+import { Bot } from "../models/Bot";
+
+// new Router
+const websiteRouter = new Router();
+
+// define routes
+websiteRouter.post("/contact", (context, next) => {
+    Logger.INFO(`POST /contact Triggered`);
+
+    let contactName = context.request.body.contactName || "No Name";
+    let contactEmail = context.request.body.contactEmail || "No Email";
+    let contactNumber = context.request.body.contactNumber || "No Number";
+    let contactContent = context.request.body.contactContent || "No Content";
+
+    let message = `${contactName}\n${contactEmail}\n${contactNumber}\n${contactContent}`;
+
+    Bot.notify(message);
+
+    return context.body = {
+        result: "success",
+        errors: [],
+        data: []
+    }
+});
+
+// export
+export { websiteRouter };
