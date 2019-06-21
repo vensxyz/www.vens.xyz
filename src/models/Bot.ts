@@ -18,7 +18,7 @@ class Bot {
 
     public static start() {
         Logger.INFO("Starting TeleBot");
-        Bot.start();
+        Bot.telebot.start();
     }
 
     public static notify(message) {
