@@ -12,7 +12,7 @@ server {
     server_name www.vens.xyz vens.xyz;
 
     # public files
-    root /home/andrew/code/wwwvensxyz/public;
+    root /home/andrew/code/www.vens.xyz/public;
     index index.html;
 
     error_page 400 /404.html;
