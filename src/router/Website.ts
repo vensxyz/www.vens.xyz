@@ -19,8 +19,9 @@ websiteRouter.post("/contact", (context, next) => {
     let contactNumber = context.request.body.contactNumber || "No Number";
     let contactContent = context.request.body.contactContent || "No Content";
 
-    let message = `${contactName}\n${contactEmail}\n${contactNumber}\n${contactContent}`;
+    let message = `Name: ${contactName}\nEmail: ${contactEmail}\nNumber: ${contactNumber}\n${contactContent}`;
 
+    Logger.TRAC(message);
     Bot.notify(message);
 
     return context.body = {
