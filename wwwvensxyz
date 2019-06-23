@@ -3,13 +3,22 @@ upstream nodejs {
     server localhost:3000;
 }
 
+server {
+    listen 80;
+    listen [::]:80;
+
+    server_name *.example.com;
+
+    return 301 $scheme.vens.xyz$request_uri;
+}
+
 # main server
 server {
     listen 80;
     listen [::]:80;
 
     # domain names
-    server_name www.vens.xyz vens.xyz;
+    server_name vens.xyz;
 
     # public files
     root /home/andrew/code/www.vens.xyz/public;
