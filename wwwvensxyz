@@ -9,7 +9,7 @@ server {
 
     server_name *.example.com;
 
-    return 301 $scheme.vens.xyz$request_uri;
+    return 301 $scheme://vens.xyz$request_uri;
 }
 
 # main server
