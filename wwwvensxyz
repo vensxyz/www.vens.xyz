@@ -7,7 +7,7 @@ server {
     listen 80;
     listen [::]:80;
 
-    server_name *.example.com;
+    server_name *.vens.xyz;
 
     return 301 $scheme://vens.xyz$request_uri;
 }
