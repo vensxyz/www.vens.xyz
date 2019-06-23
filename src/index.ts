@@ -26,7 +26,7 @@ koa.use(bodyparser());
 koa.use(websiteRouter.routes());
 koa.use(websiteRouter.allowedMethods());
 koa.use(async (context, next) => {
-    context.response.headers = {"Content-Type": "application/json"};
+    context.set("Content-Type", "application/json");
     context.status = 404;
     return context.body = JSON.stringify({
         message: "404"
