@@ -23,7 +23,10 @@ server {
 
     # route public
     location / {
-        try_files $uri $uri/index.html @nodejs;
+        try_files $uri $uri/index.html /404.html;
+    }
+    location = /contact {
+        try_files @nodejs;
     }
     # route nodejs
     location @nodejs {
