@@ -1,0 +1,65 @@
+# nodejs application
+upstream nodejs {
+    server localhost:3000;
+}
+
+server {
+    listen 80;
+    listen [::]:80;
+
+    server_name *.vens.xyz;
+
+    return 301 $scheme://vens.xyz$request_uri;
+}
+
+# main server
+server {
+
+    # domain names
+    server_name vens.xyz;
+
+    # public files
+    root /home/andrew/code/www.vens.xyz/public;
+    index index.html;
+
+    error_page 400 /404.html;
+
+    # logs
+    access_log /var/log/nginx/www.vens.xyz.access.log;
+    error_log /var/log/nginx/www.vens.xyz.error.log;
+
+    # route public
+    location / {
+        try_files $uri $uri/index.html /404.html;
+    }
+    location = /contact {
+    proxy_redirect off;
+        proxy_redirect off;
+        proxy_http_version 1.1;
+        proxy_pass http://nodejs;
+        proxy_set_header Host $host ;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    }
+
+    listen [::]:443 ssl ipv6only=on; # managed by Certbot
+    listen 443 ssl; # managed by Certbot
+    ssl_certificate /etc/letsencrypt/live/vens.xyz-0001/fullchain.pem; # managed by Certbot
+    ssl_certificate_key /etc/letsencrypt/live/vens.xyz-0001/privkey.pem; # managed by Certbot
+    include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
+
+}
+server {
+    if ($host = vens.xyz) {
+        return 301 https://$host$request_uri;
+    } # managed by Certbot
+
+
+    listen 80;
+    listen [::]:80;
+    server_name vens.xyz;
+    return 404; # managed by Certbot
+
+
+}
