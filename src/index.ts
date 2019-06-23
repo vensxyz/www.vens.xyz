@@ -25,6 +25,13 @@ koa.use(bodyparser());
 
 koa.use(websiteRouter.routes());
 koa.use(websiteRouter.allowedMethods());
+koa.use(async (context, next) => {
+    context.response.header = {"Content-Type": "application/json"};
+    context.status = 404;
+    return context.body = JSON.stringify({
+        message: "404"
+    });
+});
 
 koa.listen(CONFIG.PORT, () => {
     Logger.INFO(`Koa server is running [PORT:${CONFIG.PORT}]`);
