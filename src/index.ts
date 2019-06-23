@@ -29,7 +29,9 @@ koa.use(async (context, next) => {
     context.set("Content-Type", "application/json");
     context.status = 404;
     return context.body = JSON.stringify({
-        message: "404"
+        result: "failure",
+        erros: ["405"],
+        data: []
     });
 });
 
