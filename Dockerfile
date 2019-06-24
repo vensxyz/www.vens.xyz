@@ -2,14 +2,14 @@
 FROM node:10.16.0
 
 # Create a new user
-RUN useradd -ms /bin/bash wwwvensxyz
+RUN useradd -ms /bin/bash vensxyz
 
 # change working dir to app dir
-RUN mkdir -p /home/wwwvensxyz/app/node_modules
-RUN chown -R wwwvensxyz:wwwvensxyz /home/wwwvensxyz/app
+RUN mkdir -p /home/vensxyz/app/node_modules
+RUN chown -R vensxyz:vensxyz /home/vensxyz/app
 
-USER wwwvensxyz
-WORKDIR /home/wwwvensxyz/app
+USER vensxyz
+WORKDIR /home/vensxyz/app
 
 COPY package*.json ./
 RUN npm install
@@ -19,18 +19,24 @@ RUN npm install
 # RUN rm *.sqlite
 
 # OPTION B) Copy required files only
-COPY --chown=wwwvensxyz:wwwvensxyz ./src /home/wwwvensxyz/app/src
-COPY --chown=wwwvensxyz:wwwvensxyz ./.env /home/wwwvensxyz/app/.env
-COPY --chown=wwwvensxyz:wwwvensxyz ./ormconfig.json /home/wwwvensxyz/app/ormconfig.json
-COPY --chown=wwwvensxyz:wwwvensxyz ./tsconfig.json /home/wwwvensxyz/app/tsconfig.json
+COPY --chown=vensxyz:vensxyz ./src /home/vensxyz/app/src
+COPY --chown=vensxyz:vensxyz ./.env /home/vensxyz/app/.env
+COPY --chown=vensxyz:vensxyz ./ormconfig.json /home/vensxyz/app/ormconfig.json
+COPY --chown=vensxyz:vensxyz ./tsconfig.json /home/vensxyz/app/tsconfig.json
 
 # get build args
-ARG app_port
 ARG app_debug
+ARG app_port
+ARG app_json_limit
+ARG app_bot_token
+ARG app_bot_admin
 
 # envirnment variables
-ENV PORT=$app_port
 ENV DEBUG=$app_debug
+ENV PORT=$app_port
+ENV JSON_LIMIT=$app_json_limit
+ENV BOT_TOKEN=$app_bot_token
+ENV BOT_ADMIN=$app_bot_admin
 
 # build project
 RUN npm run build
@@ -39,4 +45,4 @@ RUN npm run build
 EXPOSE $app_port
 
 # launch
-CMD ["node", "/home/wwwvensxyz/app/dist/index.js"]
+CMD ["node", "/home/vensxyz/app/dist/index.js"]
