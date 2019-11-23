@@ -6,11 +6,14 @@ dotenv.config();
 
 // define CONFIG variables for code completion
 const CONFIG = {
-    DEBUG: parseInt(process.env.DEBUG),
-    PORT: parseInt(process.env.PORT),
-    JSON_LIMIT: process.env.JSON_LIMIT,
+    
+    SERVER_DEBUG: parseInt(process.env.SERVER_DEBUG),
+    SERVER_PORT: parseInt(process.env.SERVER_PORT),
+
+    BODYPARSER_JSON_LIMIT: process.env.BODYPARSER_JSON_LIMIT,
     BOT_TOKEN: process.env.BOT_TOKEN,
     BOT_ADMIN: process.env.BOT_ADMIN
+
 };
 
 // export
