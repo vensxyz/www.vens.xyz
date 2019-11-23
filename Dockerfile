@@ -21,28 +21,27 @@ RUN npm install
 # OPTION B) Copy required files only
 COPY --chown=vensxyz:vensxyz ./src /home/vensxyz/app/src
 COPY --chown=vensxyz:vensxyz ./.env /home/vensxyz/app/.env
-COPY --chown=vensxyz:vensxyz ./ormconfig.json /home/vensxyz/app/ormconfig.json
 COPY --chown=vensxyz:vensxyz ./tsconfig.json /home/vensxyz/app/tsconfig.json
 
 # get build args
-ARG app_debug
-ARG app_port
-ARG app_json_limit
-ARG app_bot_token
-ARG app_bot_admin
+ARG server_debug
+ARG server_port
+ARG bodyparser_json_limit
+ARG bot_token
+ARG bot_admin
 
 # envirnment variables
-ENV DEBUG=$app_debug
-ENV PORT=$app_port
-ENV JSON_LIMIT=$app_json_limit
-ENV BOT_TOKEN=$app_bot_token
-ENV BOT_ADMIN=$app_bot_admin
+ENV SERVER_DEBUG=$server_debug
+ENV SERVER_PORT=$server_port
+ENV BODYPARSER_JSON_LIMIT=$bodyparser_json_limit
+ENV BOT_TOKEN=$bot_token
+ENV BOT_ADMIN=$bot_admin
 
 # build project
 RUN npm run build
 
 # expose port
-EXPOSE $app_port
+EXPOSE $server_port
 
 # launch
 CMD ["node", "/home/vensxyz/app/dist/index.js"]
