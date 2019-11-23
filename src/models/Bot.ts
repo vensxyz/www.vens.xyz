@@ -10,8 +10,11 @@ class Bot {
     public static telebot;
     public static botOwner;
 
-    public constructor(botToken, botOwner) {
-        Logger.INFO("Creating TeleBot");
+    public constructor() {
+    }
+
+    public static init(botToken, botOwner) {
+        Logger.INFO("init TeleBot");
         Bot.telebot = new TeleBot(botToken);
         Bot.botOwner = botOwner;
     }
