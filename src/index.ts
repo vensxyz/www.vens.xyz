@@ -14,8 +14,13 @@ import * as bodyparser from "koa-bodyparser";
 // import router
 import { websiteRouter } from "./router/Website";
 
-// init telegram bot
-Bot.init(CONFIG.BOT_TOKEN, CONFIG.BOT_ADMIN);
+try {
+    // init telegram bot
+    Bot.init(CONFIG.BOT_TOKEN, CONFIG.BOT_ADMIN);
+}
+catch (error) {
+    console.log(`Bot.init() failed: ${error}`);
+}
 
 // create new koa
 const koa = new Koa();
