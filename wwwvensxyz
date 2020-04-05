@@ -1,6 +1,6 @@
 # nodejs application
 upstream nodejs {
-    server localhost:3000;
+    server localhost:3009;
 }
 
 server {
