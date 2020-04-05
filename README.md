@@ -20,5 +20,5 @@ $ docker build \
 To run the previously built docker image, run
 
 ```sh
-$ docker run --name=wwwvensxyz --restart=always -p=3009:3009 -t wwwvensxyz
+$ docker run --name=wwwvensxyz --restart=always -p=3009:3009 -d -t wwwvensxyz
 ```
