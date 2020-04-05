@@ -22,6 +22,7 @@ class Bot {
     public static start() {
         Logger.INFO("Starting TeleBot");
         Bot.telebot.start();
+        Bot.telebot.sendMessage(Bot.botOwner, "Service started correctly");
     }
 
     public static notify(message) {
