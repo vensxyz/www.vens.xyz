@@ -33,7 +33,7 @@ koa.use(async (context, next) => {
     context.status = 404;
     return context.body = JSON.stringify({
         result: "failure",
-        erros: ["405"],
+        erros: ["404"],
         data: []
     });
 });
