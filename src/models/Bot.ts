@@ -19,15 +19,15 @@ class Bot {
         Bot.botOwner = botOwner;
     }
 
-    public static start() {
+    public static async start() {
         Logger.INFO("Starting TeleBot");
         Bot.telebot.start();
-        Bot.telebot.sendMessage(Bot.botOwner, "Service started correctly");
+        await Bot.telebot.sendMessage(Bot.botOwner, "Service started correctly");
     }
 
-    public static notify(message) {
+    public static async notify(message) {
         Logger.INFO("Message received");
-        Bot.telebot.sendMessage(Bot.botOwner, message);
+        await Bot.telebot.sendMessage(Bot.botOwner, message);
         return true;
     }
 
