@@ -8,27 +8,29 @@ import * as TeleBot from "telebot";
 class Bot {
 
     public static telebot;
-    public static botOwner;
+    public static adminId;
 
+    // constructor
     public constructor() {
+
     }
 
-    public static init(botToken, botOwner) {
+    public static init(botToken, botAdminId) {
         Logger.INFO("init TeleBot");
+
         Bot.telebot = new TeleBot(botToken);
-        Bot.botOwner = botOwner;
+        Bot.adminId = botAdminId;
     }
-
-    public static async start() {
+    public static start() {
         Logger.INFO("Starting TeleBot");
-        Bot.telebot.start();
-        await Bot.telebot.sendMessage(Bot.botOwner, "Service started correctly");
-    }
 
-    public static async notify(message) {
+        Bot.telebot.start();
+        Bot.telebot.sendMessage(Bot.adminId, "Your bot has started up");
+    }
+    public static notify(message) {
         Logger.INFO("Message received");
-        await Bot.telebot.sendMessage(Bot.botOwner, message);
-        return true;
+
+        Bot.telebot.sendMessage(Bot.adminId, message);
     }
 
 }
