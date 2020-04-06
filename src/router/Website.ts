@@ -12,7 +12,7 @@ const websiteRouter = new Router();
 
 // define routes
 websiteRouter.post("/contact", (context, next) => {
-    Logger.INFO(`[POST] /contact `);
+    Logger.INFO(`[POST] /contact`);
 
     let contactName = context.request.body.contactName || "No Name";
     let contactEmail = context.request.body.contactEmail || "No Email";
