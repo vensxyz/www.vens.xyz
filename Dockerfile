@@ -1,4 +1,4 @@
-# use node 10.15.3
+# use node 10.16.0
 FROM node:10.16.0
 
 # Create a new user
@@ -14,11 +14,7 @@ WORKDIR /home/vensxyz/app
 COPY package*.json ./
 RUN npm install
 
-# OPTION A) Copy all files/folders, remove db.sqlite
-# COPY --chown=wwwvensxyz:wwwvensxyz . .
-# RUN rm *.sqlite
-
-# OPTION B) Copy required files only
+# Copy required files only
 COPY --chown=vensxyz:vensxyz ./src /home/vensxyz/app/src
 COPY --chown=vensxyz:vensxyz ./.env /home/vensxyz/app/.env
 COPY --chown=vensxyz:vensxyz ./tsconfig.json /home/vensxyz/app/tsconfig.json
@@ -28,14 +24,14 @@ ARG server_debug
 ARG server_port
 ARG bodyparser_json_limit
 ARG bot_token
-ARG bot_admin
+ARG bot_admin_id
 
 # envirnment variables
 ENV SERVER_DEBUG=$server_debug
 ENV SERVER_PORT=$server_port
 ENV BODYPARSER_JSON_LIMIT=$bodyparser_json_limit
 ENV BOT_TOKEN=$bot_token
-ENV BOT_ADMIN=$bot_admin
+ENV BOT_ADMIN_ID=$bot_admin_id
 
 # build project
 RUN npm run build
