@@ -12,7 +12,7 @@ const CONFIG = {
 
     BODYPARSER_JSON_LIMIT: process.env.BODYPARSER_JSON_LIMIT,
     BOT_TOKEN: process.env.BOT_TOKEN,
-    BOT_ADMIN: process.env.BOT_ADMIN
+    BOT_ADMIN_ID: process.env.BOT_ADMIN_ID
 
 };
 
